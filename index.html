@@ -1,0 +1,115 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 4</title>
+    <meta charset="UTF-8"/>
+
+    <script src="src/index.js" type="module"></script>
+</head>
+
+<body>
+<h1>Implement the symbolic diff here</h1>
+<div id="container">
+
+</div>
+<div>
+    <button id="demoButton">
+        Add something
+    </button>
+</div>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Polynomial Differentiation</title>
+  <meta charset="UTF-8"/>
+  
+</head>
+<body>
+  <div class="container">
+    <h1>Polynomial Differentiation</h1>
+    <div class="input-container">
+      <label for="polynomial">Enter a polynomial:</label>
+      <input type="text" id="polynomial" placeholder="Example: 3x^2 - 2x + 5">
+    </div>
+    <div class="input-container">
+      <label for="variable">Differentiate by variable:</label>
+      <input type="text" id="variable" placeholder="Variable (e.g., x)">
+    </div>
+    <button id="differentiate-button">Differentiate</button>
+    <div id="result" class="result-container"></div>
+  </div>
+  <script type="module">
+        const Differentiate =  () => {
+        const polynomialInput = document.getElementById('polynomial');
+        const variableInput = document.getElementById('variable');
+        const differentiateButton = document.getElementById('differentiate-button');
+        const resultContainer = document.getElementById('result');
+      
+        differentiateButton.addEventListener('click', () => {
+          const polynomial = polynomialInput.value;
+          const diffVariable = variableInput.value;
+      
+          try {
+            const monomials = miniMaple.extractCoeffVariablePower(polynomial);
+            const derivative = miniMaple.differentiatePolynomial(monomials, diffVariable);
+            const result = miniMaple.polynomialToString(derivative);
+            resultContainer.innerHTML = `Result: ${result}`;
+          } catch (error) {
+            resultContainer.innerHTML = `Error: ${error.message}`;
+          }
+        });
+    };
+        document
+        .getElementById("cdifferentiate-button")
+        .addEventListener("click", Differentiate);
+  </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="src/index.js" type="module"></script>
+    <title>miniMaple</title>
+  </head>
+  <body>
+    <div>
+      <label for="polynomial">Enter polynomial expression:</label>
+      <input type="text" id="polynomial" placeholder="e.g., 4*x^3" />
+
+      <label for="variable">Enter variable:</label>
+      <input type="text" id="variable" placeholder="e.g., x" />
+
+      <button id="calculateButton">Calculate</button>
+
+      <p id="result">Result:</p>
+    </div>
+
+    <script type="module">
+        //import {miniMaple} from "./src/miniMaple.js";
+        import { miniMaple } from "/src/miniMaple.js";
+        const calculate = () => {
+          const polynomialInput = document.getElementById('polynomial');
+          const variableInput = document.getElementById('variable');
+          const resultContainer = document.getElementById('result');
+          try {
+            const monomials = miniMaple.extractCoeffVariablePower(polynomialInput.value);
+            const derivative = miniMaple.differentiatePolynomial(monomials,variableInput.value);
+            const result = miniMaple.polynomialToString(derivative);
+            document.getElementById("result").textContent = `Result: ${result}`;
+          } catch (error) {
+            document.getElementById("result").textContent = `Error: ${error.message}`;
+          }
+      };
+
+    document.getElementById("calculateButton").addEventListener("click", calculate);
+    </script>
+  </body>
+</html>
+ 
+ 
